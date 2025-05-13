@@ -10,7 +10,7 @@ void Main()
 	Scene::SetBackground(HSV{ 0, 0.0, 0.86 });
 
 
-	field field(24);
+	field field(6);
 	rundfield(field);
 
 	Font font{ FontMethod::MSDF, 48, Typeface::Regular };
@@ -20,6 +20,12 @@ void Main()
 
 	while (System::Update())
 	{
+		static bool move_f = false;
+		static Vec2 move_vec2;
+		if(move_f == true){
+			
+		}
+
 		/*boardsize = RectF{ 20, 20, 710, 710 };*/
 		double edge = 710.0 / field.size();
 		for (int32 i = 0; i < field.size(); i++) {
@@ -39,7 +45,10 @@ void Main()
 				}
 
 				if (rect.leftClicked()) {
-					rundfield(field);
+					if (move_f == false) {
+						move_f = true;
+						move_vec2 = Vec2{};
+					}
 				}
 			}
 		}
